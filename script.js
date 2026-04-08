@@ -11,7 +11,10 @@ let play = document.getElementById("playBtn");
 
 let randNum;
 let message = document.getElementById("msg");
-
+let winsText = document.getElementById("wins");
+let wins = 0;
+let numberOfGuesses = 0;
+let guessesPerWin = [];
 play.addEventListener("click", beginGame);
 function beginGame(){
   let difficultyLevel = document.getElementsByName("level");
@@ -36,12 +39,40 @@ function beginGame(){
 
 function checkGuess(){
   let guess = document.getElementById("guess");
+  let proximity = Math.abs(Number(guess.value)-randNum);
+  numberOfGuesses++;
   if (Number(guess.value)>randNum){
-    message.innerText = ("Too high!");
+
+    if(proximity<=2){
+      message.innerText = ("Too high, but hot!");
+    }else if (proximity<=5){
+      message.innerText = ("Too high, but warm!");
+    }else{
+      message.innerText = ("Too high, and cold!");
+    }
+
   }else if (Number(guess.value)<randNum){
-    message.innerText = ("Too low!");
+
+    if(proximity<=2){
+      message.innerText = ("Too low, but hot!");
+    }else if (proximity<=5){
+      message.innerText = ("Too low, but warm!");
+    }else{
+      message.innerText = ("Too low, and cold!");
+    }
+
   }else if (Number(guess.value) == randNum){
     message.innerText = ("Correct! Good Job, " + userName + "!");
+    guessesPerWin.push(numberOfGuesses);
+
+    let sum = 0;
+    for (let num of guessesPerWin) {
+        sum += num;
+    }
+    const average = sum / guessesPerWin.length;
+    wins ++;
+    winsText.innerText = ("Total wins: "+ wins);
+    document.getElementById("avgScore").innerText = ("Average Score: " + average);
   }else{
     message.innerText = ("Please type a Number!");
   }

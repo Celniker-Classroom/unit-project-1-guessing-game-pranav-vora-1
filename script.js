@@ -1,16 +1,11 @@
 // add javascript here
-
-
-
-
-
-// let userName = prompt("Please enter your name.");
-// if (userName === null) {
-//   console.log("User cancelled the prompt.");
-//   userName = "";
-// }else{
-//   userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
-// }
+let userName = prompt("Please enter your name.");
+if (userName === null) {
+  console.log("User cancelled the prompt.");
+  userName = "";
+}else{
+  userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
+}
 
 let play = document.getElementById("playBtn");
 
@@ -32,7 +27,7 @@ function beginGame(){
   guessButton.disabled = false;
   giveUpButton.disabled = false;
   play.disabled = true;
-  message.innerText = ("Type your first guess!");
+  message.innerText = (userName + ", type your first guess!");
   // alert("Range:" + range);
   // alert("RandNum:" + randNum);
   guessButton.addEventListener("click", checkGuess);
@@ -46,7 +41,7 @@ function checkGuess(){
   }else if (Number(guess.value)<randNum){
     message.innerText = ("Too low!");
   }else if (Number(guess.value) == randNum){
-    message.innerText = ("Correct!");
+    message.innerText = ("Correct! Good Job, " + userName + "!");
   }else{
     message.innerText = ("Please type a Number!");
   }

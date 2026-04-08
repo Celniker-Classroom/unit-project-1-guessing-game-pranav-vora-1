@@ -10,7 +10,6 @@ if (userName === null) {
 let play = document.getElementById("playBtn");
 
 let randNum;
-let guess = document.getElementById("guess");
 let message = document.getElementById("msg");
 
 play.addEventListener("click", beginGame);
@@ -23,10 +22,8 @@ function beginGame(){
     }
   }
   randNum = Math.floor(Math.random() * range) + 1;  
-  let guess = document.getElementById("guess");
   let guessButton = document.getElementById("guessBtn");
   let giveUpButton = document.getElementById("giveUpBtn");
-  let message = document.getElementById("msg");
   guessButton.disabled = false;
   giveUpButton.disabled = false;
   play.disabled = true;
@@ -38,6 +35,7 @@ function beginGame(){
 
 
 function checkGuess(){
+  let guess = document.getElementById("guess");
   if (Number(guess.value)>randNum){
     message.innerText = ("Too high!");
   }else if (Number(guess.value)<randNum){

@@ -31,8 +31,8 @@ function beginGame(){
   giveUpButton.disabled = false;
   play.disabled = true;
   message.innerText = ("Type your first guess!");
-  alert("Range:" + range);
-  alert("RandNum:" + randNum);
+  // alert("Range:" + range);
+  // alert("RandNum:" + randNum);
   guessButton.addEventListener("click", checkGuess);
 }
 

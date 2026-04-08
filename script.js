@@ -1,6 +1,12 @@
 // add javascript here
 let userName = prompt("Please enter your name.");
-userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
+if (userName === null) {
+  console.log("User cancelled the prompt.");
+  userName = "";
+}else{
+  userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
+}
+
 let play = document.getElementById("playBtn");
 
 let randNum;

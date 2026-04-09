@@ -15,11 +15,16 @@ let winsText = document.getElementById("wins");
 let wins = 0;
 let numberOfGuesses = 0;
 let guessesPerWin = [];
+let timeElapsedPerWin = [];
 let guessButton = document.getElementById("guessBtn");
 let giveUpButton = document.getElementById("giveUpBtn");
 let range = 3;
+let startTime = new Date().getTime();
 playBtn.addEventListener("click", play);
+let intervalId = setInterval(time, 1000);
+let initialTime = new Date().getTime();
 function play(){
+  initialTime = new Date().getTime();
   let difficultyLevel = document.getElementsByName("level");
   for (let i = 0; i<difficultyLevel.length; i++){
     if (difficultyLevel[i].checked){
@@ -66,6 +71,7 @@ function makeGuess(){
   }else if (Number(guess.value) == randNum){
     message.innerText = ("Correct! Good Job, " + userName + "!");
     updateScore(numberOfGuesses);
+    updateTimers(new Date().getTime());
 
   }else{
     message.innerText = ("Please type a Number!");
@@ -100,9 +106,37 @@ function updateScore(score){
   }
 }
 
-function displayDate(){
-  let dateText = document.getElementById("date");
-  
+function time(){
+  //Returns a formatted date/time string with month name, day suffix, and live time with seconds
+  const now = new Date();
+  let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  let currentMonth = months[now.getMonth()];
+  let currentDate = now.getDate();
+  let suffix = "th";
+  if (currentDate == 1 || currentDate == 21 || currentDate == 31){
+    suffix = "st";
+  }else if (currentDate == 2 || currentDate == 22){
+    suffix = "nd";
+  }else if (currentDate == 3 || currentDate == 23){
+    suffix = "rd";
+  }
+  let currentYear = now.getFullYear();
+  let timeElapsed = (((new Date().getTime() - startTime) / 1000)).toFixed();
+  document.getElementById("date").textContent = (currentMonth + " " + currentDate + suffix + ", " + currentYear + ". Time elapsed: " + timeElapsed + " seconds.");
+}
+
+function updateTimers(endMs){
+  //Calculates round time, updates fastest game and average time
+  let elapsedTime = (endMs - initialTime)/1000;
+  timeElapsedPerWin.push(elapsedTime);
+  let fastestTime = Math.min(...timeElapsedPerWin).toFixed(2);
+  let sum = 0;
+  for (let num of timeElapsedPerWin) {
+      sum += num;
+  }
+  const avgTime = (sum / timeElapsedPerWin.length).toFixed(2);
+  document.getElementById("fastest").textContent = ("Fastest Game: " + fastestTime + " seconds.");
+  document.getElementById("avgTime").textContent = ("Average Time: " + avgTime + " seconds.");
 }
 
 function reset(){

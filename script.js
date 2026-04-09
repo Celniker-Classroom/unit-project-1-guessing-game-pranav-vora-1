@@ -48,8 +48,9 @@ function makeGuess(){
   let guess = document.getElementById("guess");
   let proximity = Math.abs(Number(guess.value)-randNum);
   numberOfGuesses++;
+  const incorrectSound = new Audio('sound-effects/700641__producing_raylite__incorrect-buzzer.wav');
   if (Number(guess.value)>randNum){
-
+      incorrectSound.play();
     if(proximity<=2){
       message.textContent = ("Too high, but you are hot!");
     }else if (proximity<=5){
@@ -59,7 +60,7 @@ function makeGuess(){
     }
 
   }else if (Number(guess.value)<randNum){
-
+    incorrectSound.play();
     if(proximity<=2){
       message.textContent = ("Too low, but you are hot!");
     }else if (proximity<=5){
@@ -72,6 +73,8 @@ function makeGuess(){
     message.textContent = ("Correct! Good Job, " + userName + "!");
     updateScore(numberOfGuesses);
     updateTimers(new Date().getTime());
+    const correctSound = new Audio('sound-effects/546081__stavsounds__correct3.wav');
+    correctSound.play();
 
   }else{
     message.textContent = ("Please type a Number!");

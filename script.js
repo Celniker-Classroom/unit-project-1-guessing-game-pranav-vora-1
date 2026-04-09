@@ -21,6 +21,9 @@ let giveUpButton = document.getElementById("giveUpBtn");
 let range = 3;
 let startTime = new Date().getTime();
 playBtn.addEventListener("click", play);
+guessButton.addEventListener("click", makeGuess);
+giveUpButton.addEventListener("click", giveUp);
+time()
 let intervalId = setInterval(time, 1000);
 let initialTime = new Date().getTime();
 function play(){
@@ -39,8 +42,6 @@ function play(){
   message.innerText = (userName + ", type your first guess!");
   // alert("Range:" + range);
   // alert("RandNum:" + randNum);
-  guessButton.addEventListener("click", makeGuess);
-  document.getElementById("giveUpBtn").addEventListener("click", giveUp);
 }
 
 
@@ -81,6 +82,7 @@ function makeGuess(){
 
 function giveUp(){
   updateScore(range);
+  updateTimers(new Date().getTime());
 }
 
 

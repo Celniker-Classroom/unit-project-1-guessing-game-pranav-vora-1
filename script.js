@@ -35,11 +35,10 @@ function play(){
     }
   }
   randNum = Math.floor(Math.random() * range) + 1;  
-
+  message.textContent = (userName + ", type your first guess!");
   guessButton.disabled = false;
   giveUpButton.disabled = false;
   playBtn.disabled = true;
-  message.innerText = (userName + ", type your first guess!");
   // alert("Range:" + range);
   // alert("RandNum:" + randNum);
 }
@@ -52,30 +51,30 @@ function makeGuess(){
   if (Number(guess.value)>randNum){
 
     if(proximity<=2){
-      message.innerText = ("Too high, but you are hot!");
+      message.textContent = ("Too high, but you are hot!");
     }else if (proximity<=5){
-      message.innerText = ("Too high, but you are warm!");
+      message.textContent = ("Too high, but you are warm!");
     }else{
-      message.innerText = ("Too high, and you are cold!");
+      message.textContent = ("Too high, and you are cold!");
     }
 
   }else if (Number(guess.value)<randNum){
 
     if(proximity<=2){
-      message.innerText = ("Too low, but you are hot!");
+      message.textContent = ("Too low, but you are hot!");
     }else if (proximity<=5){
-      message.innerText = ("Too low, but you are warm!");
+      message.textContent = ("Too low, but you are warm!");
     }else{
-      message.innerText = ("Too low, and you are cold!");
+      message.textContent = ("Too low, and you are cold!");
     }
 
   }else if (Number(guess.value) == randNum){
-    message.innerText = ("Correct! Good Job, " + userName + "!");
+    message.textContent = ("Correct! Good Job, " + userName + "!");
     updateScore(numberOfGuesses);
     updateTimers(new Date().getTime());
 
   }else{
-    message.innerText = ("Please type a Number!");
+    message.textContent = ("Please type a Number!");
   }
 }
 
@@ -99,8 +98,8 @@ function updateScore(score){
   }
   const average = sum / guessesPerWin.length;
   wins ++;
-  winsText.innerText = ("Total wins: "+ wins);
-  document.getElementById("avgScore").innerText = ("Average Score: " + average);
+  winsText.textContent = ("Total wins: "+ wins);
+  document.getElementById("avgScore").textContent = ("Average Score: " + average);
   let leaderboardElements=document.getElementsByName("leaderboard");
 
   for(let i = 0; i<3; i++){

@@ -1,0 +1,55 @@
+p, h3, ol{
+    text-align: center;
+    margin: 10px;
+}
+ol{
+    list-style-position: inside;
+}
+#date{
+    font-size: 40px;
+}
+.main-container{
+    display: block;
+    width: 50%;
+    background-color: #333333;
+    margin: 0 auto;
+    color: #FFFFFF;
+    padding: 30px;
+    border-radius: 30px;
+    font-size: 20px;
+}
+.play-container{
+    display: block;
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%; 
+    text-align: center;
+}
+.guess-container{
+    display: block;
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+.radio-button-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+}
+#guess {
+    width: 200px;
+    height: 40px;
+}
+
+button {
+    width: 120px;
+    height: 45px;
+    margin: 10px;
+}
+input, button {
+    width: auto;
+    max-width: 100px;
+    text-align: center;
+}

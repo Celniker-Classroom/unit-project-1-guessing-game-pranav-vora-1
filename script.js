@@ -1,11 +1,10 @@
 // add javascript here
 let userName = prompt("Please enter your name.");
-if (userName === null) {
-  console.log("User cancelled the prompt.");
-  userName = "";
-}else{
-  userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
+while (userName === null){
+  userName = prompt("Please type a valid username!");
 }
+userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase(); //capitalizes the first letter and makes the rest lowercase
+
 
 let playBtn = document.getElementById("playBtn");
 
@@ -20,6 +19,7 @@ let guessButton = document.getElementById("guessBtn");
 let giveUpButton = document.getElementById("giveUpBtn");
 let range = 3;
 let startTime = new Date().getTime();
+const playSound = new Audio('sound-effects/freesound_community-button-pressed-38129.mp3');
 playBtn.addEventListener("click", play);
 guessButton.addEventListener("click", makeGuess);
 giveUpButton.addEventListener("click", giveUp);
@@ -39,6 +39,7 @@ function play(){
   guessButton.disabled = false;
   giveUpButton.disabled = false;
   playBtn.disabled = true;
+  playSound.play();
   // alert("Range:" + range);
   // alert("RandNum:" + randNum);
 }
@@ -48,7 +49,7 @@ function makeGuess(){
   let guess = document.getElementById("guess");
   let proximity = Math.abs(Number(guess.value)-randNum);
   numberOfGuesses++;
-  const incorrectSound = new Audio('sound-effects/700641__producing_raylite__incorrect-buzzer.wav');
+  const incorrectSound = new Audio('sound-effects/freesound_community-wrong-47985.mp3');
   if (Number(guess.value)>randNum){
       incorrectSound.play();
     if(proximity<=2){
@@ -85,6 +86,8 @@ function makeGuess(){
 function giveUp(){
   updateScore(range);
   updateTimers(new Date().getTime());
+  const giveUpSound = new Audio('sound-effects/u_l5xum8z250-losing-horn-313723.mp3');
+  giveUpSound.play();
 }
 
 

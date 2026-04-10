@@ -71,7 +71,8 @@ function makeGuess(){
     }
 
   }else if (Number(guess.value) == randNum){
-    message.textContent = ("Correct! Good Job, " + userName + "!");
+    let feedbackMessage = provideFeedback(numberOfGuesses, range);
+    message.textContent = ("Correct! Good Job, " + userName + "!" + " " + feedbackMessage);
     updateScore(numberOfGuesses);
     updateTimers(new Date().getTime());
     const correctSound = new Audio('sound-effects/546081__stavsounds__correct3.wav');
@@ -102,7 +103,7 @@ function updateScore(score){
   for (let num of guessesPerWin) {
       sum += num;
   }
-  const average = sum / guessesPerWin.length;
+  const average = (sum / guessesPerWin.length).toFixed(2);
   wins ++;
   winsText.textContent = ("Total wins: "+ wins);
   document.getElementById("avgScore").textContent = ("Average Score: " + average);
@@ -150,4 +151,32 @@ function reset(){
   guessButton.disabled = true;
   giveUpButton.disabled = true;
   playBtn.disabled = false;
+}
+
+function provideFeedback(score, range){
+  if (range == 3){
+    if(score>2){
+      return ("You performed below average this round. Better luck next time!");
+    }else if (score<2){
+      return ("You performed above average this round. Good work!");
+    }else{
+      return ("You performed averagely this round. nice!"); 
+    }
+  }else if (range == 10){
+    if(score>3){
+      return ("You performed below average this round. Better luck next time!");
+    }else if (score<3){
+      return ("You performed above average this round. Good work!");
+    }else{
+      return ("You performed averagely this round. nice!"); 
+    }
+  }else{
+    if(score>5){
+      return ("You performed below average this round. Better luck next time!");
+    }else if (score<5){
+      return ("You performed above average this round. Good work!");
+    }else{
+      return ("You performed averagely this round. nice!"); 
+    }
+  }
 }

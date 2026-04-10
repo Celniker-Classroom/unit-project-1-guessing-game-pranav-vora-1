@@ -1,26 +1,9 @@
 ## Above and Beyond
 Extra features:
-1. Sound Effects
-https://freesound.org/search/?q=correct
-The remaining **10 points** are graded by your teacher for creative features beyond the requirements.
+- Sound Effects from https://freesound.org/search/?q=correct and http://pixabay.com/sound-effects/. Features sounds for correct and incorrect answers located inside the makeGuess function, and for the play inside the play function and give up button located inside the giveUp function.
 
-**You must create a file called `BEYOND.md`** in the root of your project. In this file, describe:
+- CSS styles located in the styles.css file.
 
-1. What extra features you added
-2. Where each feature is in your code (function name or line numbers)
-3. Why you think it improves the game
+- Score quality feedback in the provideFeedback function located at the end of script.js. Provides feedback based on your score for the round and the difficulty the user selects.
 
-Your teacher will read `BEYOND.md`, review your code, and play your live game to assign up to 10 points.
-
-**Ideas** (you are not limited to these):
-- CSS styling and visual design
-- Score quality feedback ("Amazing!", "Good", "Needs work")
-- Sound effects or animations
-- Dark mode toggle
-- Custom difficulty levels
-- Input validation (out-of-range, non-numeric)
-- Streak tracking or win percentage
-- Keyboard support (Enter key to guess)
-- Any other creative addition
-
----
+Adding sound effects makes the game more appealing to play and less boring by signaling actions. Adding CSS styles helps to make the game more aesthetically pleasing, providing a better user experience. Score quality feedback helps the user know how good they are doing relatively. 
